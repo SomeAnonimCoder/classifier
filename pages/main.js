@@ -16,7 +16,7 @@ function sendRequest(num){
     var athesa = document.getElementById("athesa");
     var xhr = new XMLHttpRequest();
     xhr.responseType = "json";
-    xhr.open("GET", num, true);
+    xhr.open("GET", "/ta/" + base + "/"+num, true);
     xhr.send();
     xhr.onreadystatechange = function() { // (3)
         if (xhr.readyState != 4) return;
