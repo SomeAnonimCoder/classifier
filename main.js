@@ -1,15 +1,21 @@
 function thesa(){
-    sendRequest(th)
+    sendRequest(th);
 }
 function athesa(){
     sendRequest(ath);
+}
+
+function back(){
+    seq = seq.slice(0,-1);
+    a = seq.pop();
+    sendRequest(a);
 }
 
 function sendRequest(num){
     var thesa = document.getElementById("thesa");
     var athesa = document.getElementById("athesa");
     var xhr = new XMLHttpRequest();
-    xhr.responseType = "json"
+    xhr.responseType = "json";
     xhr.open("GET", num, true);
     xhr.send();
     xhr.onreadystatechange = function() { // (3)
@@ -18,11 +24,13 @@ function sendRequest(num){
         console.log(json);
         thesa.textContent = json[0];
         athesa.textContent = json[2];
-        th = json[1]
-        ath = json[3]
+        th = json[1];
+        ath = json[3];
+        seq.push(num);
     }
 }
 
+seq = [];
 num = 1;
 th=-1
 ath = -1
